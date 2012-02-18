@@ -2,12 +2,38 @@ apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'idea'
 
-repositories {
-  mavenCentral()
+//build stuff
+sourceCompatibility=1.6
+targetCompatibility=1.6
+
+configurations {
+  cucumberRuntime {
+    extendsFrom testRuntime
+    jar.archivePath
+  }
 }
 
-//specify inclusion of transitive dependencies
+task cucumber {
+  dependsOn assemble
 
+  doLast {
+      println configurations.cucumberRuntime.asPath
+      println jar.archivePath
+      println "BLARG"
+    ant.java(
+      fork: true,
+      classname: "cucumber.cli.Main",
+      classpath: configurations.cucumberRuntime.asPath,
+      failOnError: true
+      ) {
+      arg value:"-f"
+      arg value:"pretty"
+      arg value:"--glue"
+      arg value:"src/test/groovy"
+      arg value:"src/test/resources"
+    }
+  }
+}
 dependencies {
   // Groovy library for groovy building!
   groovy 'org.codehaus.groovy:groovy-all:2.0.0-beta-2'
@@ -15,4 +41,8 @@ dependencies {
   testCompile 'junit:junit:4.10'
   testCompile 'info.cukes:cucumber-junit:1.0.0.RC15'
   testCompile 'info.cukes:cucumber-groovy:1.0.0.RC15'
+}
+
+repositories {
+  mavenCentral()
 }
