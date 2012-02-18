@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+
+repositories {
+  mavenCentral()
+}
+
+//specify inclusion of transitive dependencies
+
+dependencies {
+  // Groovy library for groovy building!
+  groovy 'org.codehaus.groovy:groovy-all:2.0.0-beta-2'
+
+  testCompile 'junit:junit:4.10'
+  testCompile 'info.cukes:cucumber-junit:1.0.0.RC15'
+  testCompile 'info.cukes:cucumber-groovy:1.0.0.RC15'
+}
