@@ -39,8 +39,8 @@ dependencies {
     cucumberRuntime files("${jar.archivePath}")
 
     testCompile 'junit:junit:4.10'
-    testCompile 'info.cukes:cucumber-junit:1.0.0.RC15'
-    testCompile 'info.cukes:cucumber-groovy:1.0.0.RC15'
+    testCompile 'info.cukes:cucumber-junit:1.0.9'
+    testCompile 'info.cukes:cucumber-groovy:1.0.9'
 }
 
 repositories {
