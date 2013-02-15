@@ -16,7 +16,7 @@ task cucumber() {
     dependsOn assemble
     doLast {
         javaexec {
-            main = "cucumber.cli.Main"
+            main = "cucumber.api.cli.Main"
             classpath = configurations.cucumberRuntime
             args = ['-f', 'pretty', '--glue', 'src/test/groovy', 'src/test/resources']
 
@@ -26,7 +26,7 @@ task cucumber() {
 
 dependencies {
     // Groovy library for groovy building!
-    groovy 'org.codehaus.groovy:groovy-all:2.0.0-beta-2'
+    groovy 'org.codehaus.groovy:groovy-all:2.1.0'
 
     /*
    In order to work around a really flagrant bug ( http://issues.gradle.org/browse/GRADLE-732 )
@@ -39,8 +39,8 @@ dependencies {
     cucumberRuntime files("${jar.archivePath}")
 
     testCompile 'junit:junit:4.10'
-    testCompile 'info.cukes:cucumber-junit:1.0.9'
-    testCompile 'info.cukes:cucumber-groovy:1.0.9'
+    testCompile 'info.cukes:cucumber-junit:1.1.2'
+    testCompile 'info.cukes:cucumber-groovy:1.1.2'
 }
 
 repositories {

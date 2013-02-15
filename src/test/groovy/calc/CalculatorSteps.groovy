@@ -2,8 +2,8 @@ package calc
 
 import calc.Calculator
 
-this.metaClass.mixin(cucumber.runtime.groovy.Hooks)
-this.metaClass.mixin(cucumber.runtime.groovy.EN)
+this.metaClass.mixin(cucumber.api.groovy.Hooks)
+this.metaClass.mixin(cucumber.api.groovy.EN)
 
 class CustomWorld {
     String customMethod() {
