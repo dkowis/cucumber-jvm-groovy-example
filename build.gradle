@@ -1,10 +1,15 @@
 apply plugin: 'java'
 apply plugin: 'groovy'
-apply plugin: 'idea'
 
 //build stuff
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
+
+def cucumberVersion = "1.2.2"
+
+repositories {
+    mavenCentral()
+}
 
 configurations {
     cucumberRuntime {
@@ -18,7 +23,7 @@ task cucumber() {
         javaexec {
             main = "cucumber.api.cli.Main"
             classpath = configurations.cucumberRuntime
-            args = ['-f', 'pretty', '--glue', 'src/test/groovy', 'src/test/resources']
+            args = ['--plugin', 'pretty', '--glue', 'src/test/groovy', 'src/test/resources']
 
         }
     }
@@ -26,7 +31,7 @@ task cucumber() {
 
 dependencies {
     // Groovy library for groovy building!
-    groovy 'org.codehaus.groovy:groovy-all:2.1.6'
+    compile 'org.codehaus.groovy:groovy-all:2.4.3'
 
     /*
    In order to work around a really flagrant bug ( http://issues.gradle.org/browse/GRADLE-732 )
@@ -34,15 +39,14 @@ dependencies {
    and give it the same name as the cucumberRuntime configuration, or name it something different and have the cucumberRuntime
    configuration extend from it as well.
 
+    Still a bug in gradle 2.4, despite their saying that they would fix it before 1.0
+
    VERY ANNOYING BUG
     */
     cucumberRuntime files("${jar.archivePath}")
 
     testCompile 'junit:junit:4.11'
-    testCompile 'info.cukes:cucumber-junit:1.1.4'
-    testCompile 'info.cukes:cucumber-groovy:1.1.4'
+    testCompile "info.cukes:cucumber-junit:$cucumberVersion"
+    testCompile "info.cukes:cucumber-groovy:$cucumberVersion"
 }
 
-repositories {
-    mavenCentral()
-}
