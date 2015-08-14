@@ -1,6 +1,6 @@
 A sample cucumber-jvm groovy project built using gradle!
 
-[![Build Status](https://travis-ci.org/dkowis/cucumber-jvm-groovy-example.svg?branch=master)](https://travis-ci.org/d-led/cucumber-jvm-groovy-example)
+[![Build Status](https://travis-ci.org/dkowis/cucumber-jvm-groovy-example.svg?branch=master)](https://travis-ci.org/dkowis/cucumber-jvm-groovy-example)
 
 ### Versions
  * Gradle: 1.7 
