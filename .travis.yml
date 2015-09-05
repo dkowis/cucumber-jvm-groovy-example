@@ -3,5 +3,5 @@ language: groovy
 sudo: false
 
 script:
-  - gradle cucumber
+  - gradle build
 
