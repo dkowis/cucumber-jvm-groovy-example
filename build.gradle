@@ -5,7 +5,7 @@ apply plugin: 'groovy'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
-def cucumberVersion = "1.2.2"
+def cucumberVersion = "1.2.4"
 
 repositories {
     mavenCentral()
@@ -28,6 +28,9 @@ task cucumber() {
         }
     }
 }
+
+//Ensure the cucumber tests are executed as part of the build. Makes for a very pretty output.
+build.dependsOn cucumber
 
 dependencies {
     // Groovy library for groovy building!
